@@ -7,6 +7,7 @@ También vamos a aprender un poco sobre git y sobre nuestro explorador.
 -----
 
 ## Iniciar el repositorio 📂
+**duración: 30min**
 
 Lo primero que vamos a hacer es crear nuestro repositorio local para alojar allí todo el código de nuestro proyecto. En git, un repositorio es un directorio en el que está contenido todo nuestro código.
 
@@ -20,6 +21,7 @@ $ git clone git@github.com:<nombre_usuario_github>/<nombre_repositorio>.git
 ```
 
 ## Maquetar con html
+**duración: 1h**
 
 Ahora vamos a crear el archivo html principal de nuestro proyecto, en donde vamos a construir nuestra torre mundial; una estructura de forma triangular en la que los equipos que van a participar en el próximo mundial de fútbol irán escalando posiciones a medida que avanza el torneo.
 
@@ -31,3 +33,9 @@ Dentro del contenedor de la fase de grupos, agrega ocho (8) contenedores, uno pa
 
 Revisa con el inspector (lo puedes abrir usando F12, o el menú contextual que se habilita en el explorador cuando haces clic secundario) el código que escribimos en la pestaña Elements. Revisa también la sección de estilos en esa pestaña para mostrar cómo algunos elementos tienen estilos predeterminados.
 
+## Agregar estilos con css
+**duración: 1h**
+
+Crea un archivo y ponle ocmo nombre `styles.css`. Allí agregaremos algunos estilos a los elementos usando selectores de etiqueta, id y nombre de clases.
+
+Inicialmente daremos estilo a la cancha, que es el contenedor que tiene todo dentro de sí. Al body le daremos fondo verde oscuro y usaremos clases para darle forma a las líneas blancas del campo. Las figuras circulares y las líneas del mediocampo se apoyarán en la propiedad `position: absolute;`.

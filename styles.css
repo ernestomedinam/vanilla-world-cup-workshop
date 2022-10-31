@@ -9,15 +9,16 @@
 body {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items: flex-start;
+    padding-top: 2rem;
     background-color: darkgreen;
 }
 
 #cancha {
-    position:relative;
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    position:relative;
     height: 55rem;
     /* ajustar el ancho según el dispositivo */
     width: 90rem; 
@@ -80,4 +81,54 @@ body {
     height: 100%;
     top: 0;
     left: calc(50% - 2.5px);
+}
+
+.fase {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    height: 100%;
+    margin: 1rem 0;
+    z-index: 1000;
+    background-color: rgba(50, 50, 50, 0.2);
+}
+
+.fases-finales .contenedor-bandera {
+    max-width: none;
+    margin: 0 1rem;
+}
+
+.fases-finales .bandera {
+    width: 5rem;
+}
+
+.contenedor-banderas {
+    display: flex;
+    flex-flow: row wrap;
+    flex-grow: 1;
+    margin: 0 1rem;
+    background-color: white;
+    border: 2px solid black;
+    justify-content: center;
+    align-items: center;
+}
+
+.w-auto {
+    flex-grow: 0;
+    width: auto;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.contenedor-bandera {
+    display: flex;
+    max-width: 40%;
+    margin: 0.2rem;
+}
+
+.bandera {
+    width: 100%;
+    height: auto;
 }

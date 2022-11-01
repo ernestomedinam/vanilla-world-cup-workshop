@@ -7,7 +7,7 @@ También vamos a aprender un poco sobre git y sobre nuestro explorador.
 -----
 
 ## Iniciar el repositorio 📂
-**duración: 30min**
+**duración: 0.5h**
 
 Lo primero que vamos a hacer es crear nuestro repositorio local para alojar allí todo el código de nuestro proyecto. En git, un repositorio es un directorio en el que está contenido todo nuestro código.
 
@@ -47,7 +47,7 @@ Inicialmente daremos estilo a la cancha, que es el contenedor que tiene todo den
 -----
 
 ## Completar los contenedores de cada fase del mundial ⚽
-**duración: 2.5h**
+**duración: 1.5h**
 
 Crearemos una clase para los contenedores que representan las fases; las haremos ocupar todo el largo de la cancha y repartirse el espacio vertical. Les daremos un fondo sombreado para que resalten los contenedores con las banderas sobre la cancha.
 
@@ -56,3 +56,16 @@ Los contenedores de banderas ocuparán todo el ancho para la fase de grupos y la
 Crearemos las banderas como etiquetas de imagen que hacen referencia a archivos con extensión `png`, almacenadas en una carpeta llamada `assets` que crearemos en este repositorio; estas etiquetas estarán dentro de unos contenedores flex que usaremos para facilitar el estilado. Haremos las primeras pruebas con una imagen que representa equipo por determinar (to be determined).
 
 Antes de completar este bloque, cargaremos todas las imágenes de las banderas y llenaremos el primer grupo con las banderas correctas!
+
+-----
+
+## Tipos de datos en JS 🔥
+**duración: 1h**
+
+Ahora vamos a crear un archivo llamado `index.js` en el que describiremos los tipos de datos de Javascript para expresar en variables la estructura del torneo y los equipos que participan.
+
+Se puede empezar con los equipos como objetos con tres propiedades; una de tipo booleano y dos cadenas de texto para representar nombre y código para determinar la bandera.
+
+Luego podemos estructurar un contendor de banderas como un objeto con una propiedad de tipo número y otra que es una arreglo de equipos.
+
+Las fases serán objetos que tendrán un nombre y una lista de contenedores; y luego podemos estructurar una lista de fases para complementar el nombre y completar el objeto que representa a nuestro torneo.

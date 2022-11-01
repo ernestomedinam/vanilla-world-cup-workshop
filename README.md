@@ -69,3 +69,31 @@ Se puede empezar con los equipos como objetos con tres propiedades; una de tipo 
 Luego podemos estructurar un contendor de banderas como un objeto con una propiedad de tipo número y otra que es una arreglo de equipos.
 
 Las fases serán objetos que tendrán un nombre y una lista de contenedores; y luego podemos estructurar una lista de fases para complementar el nombre y completar el objeto que representa a nuestro torneo.
+
+-----
+
+## crear commit y empujar cambios 👻
+**duración: 0.5h**
+
+Para cerrar la primera jornada, vamos a guardar todos los cambios que hemos hecho usando git. Luego estos cambios, que estarán en un commit, serán empujados hacia el repositorio remoto que hemos creado en github.
+
+```sh
+# explicar por qué se usa . en git add
+$ git add ./fileWithChanges.xxx # agrega fileWithChanges.xxx al commit
+$ git add ./ # agrega todos los archivos con cambios al commit
+$ git add . # agrega todos los archivos con cambios al commit pero supuestamente se ve más cool
+
+# explicar por qué es importante el mensaje del commit
+$ git commit # abre un editor en la terminal para que completes el mensaje...
+$ git commit -m ":zap: Agrega cambios al repo" # permite agregar el mensaje desde la terminal
+
+# explicar la utilidad de las convenciones y los mensajes explícitos
+$ git commit -m ":zap: Agrega cambios al repo" -m "- :lipstick: agrega estilos en css." 
+
+# explicar cuándo y por qué habría que usar git push origin <rama>
+$ git push # lanza error si es la primera vez que se empuja desde un repo creado localmente
+$ git push -u origin <rama> # es lo que se usa para ese primer push
+# de resto debe evitarse porque es siempre una oportunidad de error, empujando a ramas equivocadas
+```
+
+-----

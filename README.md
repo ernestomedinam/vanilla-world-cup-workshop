@@ -72,7 +72,7 @@ Las fases serán objetos que tendrán un nombre y una lista de contenedores; y l
 
 -----
 
-## crear commit y empujar cambios 👻
+## Crear commit y empujar cambios 👻
 **duración: 0.5h**
 
 Para cerrar la primera jornada, vamos a guardar todos los cambios que hemos hecho usando git. Luego estos cambios, que estarán en un commit, serán empujados hacia el repositorio remoto que hemos creado en github.
@@ -95,5 +95,20 @@ $ git push # lanza error si es la primera vez que se empuja desde un repo creado
 $ git push -u origin <rama> # es lo que se usa para ese primer push
 # de resto debe evitarse porque es siempre una oportunidad de error, empujando a ramas equivocadas
 ```
+
+-----
+
+## Introducción al DOM 🤖
+**duración: 2h**
+
+Usaremos el DOM para manipular los objetos document y window del explorador con Javascript. Esto con la finalidad de seleccionar, crear, modificar, agregar y eliminar contenido en nuestro html.
+
+Toda la estructura que hicimos ayer usando html la vamos a construir ahorita usando unas cuantas funciones de JS y una estructura de datos como la que creamos ayer, con toda la información de las fases del torneo.
+
+El archivo con la estructura del torneo se agregó al repositorio con el nombre `worldCup.js`. En este archivo se puede construir una función que complete los equipos en las fases en las que los partidos aún no están determinados.
+
+Usaremos el objeto window para agregar una propiedad llamada state en donde tendremos el torneo; puede mostrarse esta variable usando la terminal del inspector!
+
+En el index.js se construyen ahora los divs de cada fase y sus contenedores usando funciones que se ejecutan a partir del cargado del documento (por el document ready state).
 
 -----

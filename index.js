@@ -1,82 +1,88 @@
-const nombre = "Qatar";
+// const torneo = require("./worldCup");
 
-const equipo = {
-    nombre: "Qatar",
-    bandera: "qat",
-    pasaDeFase: false,
+document.onreadystatechange = () => {
+    const cancha = document.querySelector("#cancha");
+    if (document.readyState === "interactive") {
+        // cambiamos la opacidad de la cancha a 0 desde el inicio
+        cancha.style.opacity = 0;
+    }
+    if (document.readyState === "complete") {
+        // capturamos las fases
+        const fases = window.state.torneo.fases;
+        // las ordenamos
+        fases.reverse();
+        // agregamos la propiedad transición a la cancha
+        cancha.style.transition = "opacity";
+        cancha.style.transitionTimingFunction = "ease-in";
+        cancha.style.transitionDuration = "1s";
+        cancha.style.transitionDelay = "1s";
+        // para cada fase queremos construir un contenedor
+        // y agregarlo a la cancha
+        for (let fase of fases) {
+            const divFase = renderizarFase(fase);
+            cancha.appendChild(divFase);
+        }
+        // hacemos la cancha visible
+        cancha.style.opacity = 1;
+    }
 };
 
-const contenedor = {
-    cantidadEquipos: 4,
-    equipos: [{ // cada contenedor posee una lista de equipos
-        nombre: "Qatar",
-        bandera: "qat",
-        pasaDeFase: false,
-    }, {
-        nombre: "Ecuador",
-        bandera: "ecu",
-        pasaDeFase: false,
-    }, {
-        nombre: "Senegal",
-        bandera: "sen",
-        pasaDeFase: false,
-    }, {
-        nombre: "Países bajos",
-        bandera: "ned",
-        pasaDeFase: false,
-    }]
-}
-
-const fase = {
-    nombre: "Fase de grupos",
-    contenedores: [{ // cantidad de contenedores de banderas de la fase
-        cantidadEquipos: 4,
-        equipos: [{ // cada contenedor posee una lista de equipos
-            nombre: "Qatar",
-            bandera: "qat",
-            pasaDeFase: false,
-        }, {
-            nombre: "Ecuador",
-            bandera: "ecu",
-            pasaDeFase: false,
-        }, {
-            nombre: "Senegal",
-            bandera: "sen",
-            pasaDeFase: false,
-        }, {
-            nombre: "Países bajos",
-            bandera: "ned",
-            pasaDeFase: false,
-        }]
-    }, // aquí vendrían los demás contenedores de la fase
-    ]
+function renderizarFase(fase) {
+    // construimos el div
+    const divFase = document.createElement("div");
+    // le agregamos sus clases
+    divFase.classList.add("fase");
+    // capturamos los contenedores de la fase
+    const contenedores = fase.contenedores;
+    const fasesFinales = contenedores.length < 8;
+    // si fase es una fase final 
+    if (fasesFinales) {
+        // agregamos las clases adicionales
+        divFase.classList.add("justify-center", "fases-finales");
+    }
+    // para cada contenedor de banderas creamos un div
+    // con las banderas de los equipos
+    for (let contenedor of contenedores) {
+        const contenedorDeBanderas = renderizarContenedorDeBanderas(
+            contenedor,
+            fasesFinales
+        );
+        divFase.appendChild(contenedorDeBanderas);
+    }
+    return divFase;
 };
 
-const torneo = {
-    nombre: "Copa del Mundo Qatar 2022",
-    fases: [{ // lista con todas las fases del torneo
-        nombre: "Fase de grupos",
-        contenedores: [{ // cantidad de contenedores de banderas de la fase
-            cantidadEquipos: 4,
-            equipos: [{ // cada contenedor posee una lista de equipos
-                nombre: "Qatar",
-                bandera: "qat",
-                pasaDeFase: false,
-            }, {
-                nombre: "Ecuador",
-                bandera: "ecu",
-                pasaDeFase: false,
-            }, {
-                nombre: "Senegal",
-                bandera: "sen",
-                pasaDeFase: false,
-            }, {
-                nombre: "Países bajos",
-                bandera: "ned",
-                pasaDeFase: false,
-            }]
-        }, // aquí vendrían los demás contenedores de la fase
-    ]},
-        // aquí vendrían las demás fases
-    ]
+function renderizarContenedorDeBanderas(contenedor, fasesFinales) {
+    // construimos el div
+    const divContenedorDeBanderas = document.createElement("div");
+    // le agregamos sus clases
+    divContenedorDeBanderas.classList.add("contenedor-banderas");
+    // si pertenece a una fase final
+    if (fasesFinales) {
+        divContenedorDeBanderas.classList.add("w-auto");
+    }
+    // para cada equipo queremos construir un contenedor de bandera
+    for (let equipo of contenedor.equipos) {
+        const contenedorDeBandera = renderizarContenedorDeBandera(equipo);
+        divContenedorDeBanderas.appendChild(contenedorDeBandera);
+    }
+    return divContenedorDeBanderas;
+};
+
+function renderizarContenedorDeBandera(equipo) {
+    // construir el div
+    const divContenedorDeBandera = document.createElement("div");
+    // le agregamos sus clases
+    divContenedorDeBandera.classList.add("contenedor-bandera");
+    // construir el img
+    const imgBandera = document.createElement("img");
+    // le agregamos su clases
+    imgBandera.classList.add("bandera");
+    // le agregamos el src (source)
+    const src = `./assets/${equipo.bandera}.png`;
+    imgBandera.src = src;
+    imgBandera.alt = `bandera de ${equipo.nombre}`;
+    // metemos la img en el div
+    divContenedorDeBandera.appendChild(imgBandera);
+    return divContenedorDeBandera;
 };

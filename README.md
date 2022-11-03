@@ -112,3 +112,20 @@ Usaremos el objeto window para agregar una propiedad llamada state en donde tend
 En el index.js se construyen ahora los divs de cada fase y sus contenedores usando funciones que se ejecutan a partir del cargado del documento (por el document ready state).
 
 -----
+
+## Eventos: arrastrar y soltar ✋
+**duración: 3h**
+
+Para hacer los elementos arrastrables usaremos la propiedad `draggable` y crearemos funciones que escuchen eventos tipo `drag`.
+
+Le agregamos una propiedad `id` a los objetos equipo en el torneo para identificar los contenedores de bandera. De esta forma podemos acceder a esta propiedad durante la ejecución de la función que escucha los eventos de arrastrar y soltar, y saber cuál equipo se movió a cuál posición.
+
+Aprovecharemos la creación de un archivo `handlers.js` para separar el código de las funciones que renderizan en otro archivo nuevo llamado `renders.js`. En el archivo handlers escribiremos el código de las funciones que manejarán los eventos de arrastre `dragStart, dragEnd, dragEnter, dragOver, dragLeave y drop`.
+
+Estas funciones aplican reglas lógicas para permitir el arrastre de un elemento de una fase a otra, impedir saltar fases (excepto en semifinales) y no permitir que un equipo avance hasta estar acompañado en su contenedor actual.
+
+La información sobre la validez del arrastre se gestiona en la variable `state` con base en dos propiedades: `arrastrar` y `soltar`. Estas propiedades son objetos con información sobre el equipo que se arrastra y el destino en el que se desea soltar.
+
+Cuando se trata de un arrastre válido, se actualiza el estado torneo en los objetos equipo involucrados en el arrastre (el que corresponde al contenedor de bandera de origen y el de destino, que debe ser un no determinado). Después de actualizar el estado, se solicita refrescar -renderizar de nuevo- los contenedores de bandera involucrados en la operación.
+
+-----

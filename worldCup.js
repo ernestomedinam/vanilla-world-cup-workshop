@@ -237,7 +237,8 @@ function completarTorneo(_torneo) {
                 // agregamos cuantos equipos TBD sean necesarios
                 const tbd = {
                     nombre: "Por decidir",
-                    bandera: "tbd"
+                    bandera: "tbd",
+                    pasaDeFase: false
                 }
                 const veces = contenedor.cantidadEquipos - contenedor.equipos.length;
                 for (
@@ -250,9 +251,35 @@ function completarTorneo(_torneo) {
             }
         }
     }
+    let contenedorId = 1;
+    // para cada fase 
+    for (let fase of _torneo.fases) {
+        // para cada contenedor 
+        for (let contenedor of fase.contenedores) {
+            // para cada equipo
+            const equipos = [];
+            for (let equipo of contenedor.equipos) {
+                equipos.push({
+                    ...equipo,
+                    id: contenedorId
+                });
+                contenedorId += 1; 
+            }
+            contenedor.equipos = [...equipos];
+        }
+    }
     return _torneo;
 }
 
 window.state = {
-    torneo: completarTorneo(torneo)
+    torneo: completarTorneo(torneo),
+    arrastrar: {
+        id: undefined,
+        valido: false,
+        indiceFase: undefined,
+    },
+    soltar: {
+        id: undefined,
+        valido: false
+    }
 };

@@ -98,6 +98,15 @@ $ git push -u origin <rama> # es lo que se usa para ese primer push
 
 -----
 
+## halar cambios y continuar 👻
+**duración: 0.5h**
+
+Hoy arrancaremos el trabajo desde un nuevo espacio de trabajod de gitpod con base en el estado actual de la rama main, que debe tener todos los cambios que empujamos ayer. Esto lo podemos hacer directamente desde nuestro repositorio en github usando el botón de la extensión de gitpod.
+
+Si estás trabajando en un repositorio local que está desactualizado respecto al repositorio remoto, puedes también usar `$ git pull` para halar los cambios contenidos en los últimos commits.
+
+-----
+
 ## Introducción al DOM 🤖
 **duración: 2h**
 
@@ -129,3 +138,4 @@ La información sobre la validez del arrastre se gestiona en la variable `state`
 Cuando se trata de un arrastre válido, se actualiza el estado torneo en los objetos equipo involucrados en el arrastre (el que corresponde al contenedor de bandera de origen y el de destino, que debe ser un no determinado). Después de actualizar el estado, se solicita refrescar -renderizar de nuevo- los contenedores de bandera involucrados en la operación.
 
 -----
+

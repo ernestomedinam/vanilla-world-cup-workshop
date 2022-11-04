@@ -157,3 +157,9 @@ Si queremos implementar cierta lógica para que los botones se refresquen y camb
 
 En este punto, empieza a parecer que tiene sentido usar alguna abstracción que automatice ciertos procesos, como el refrescamiento de los componentes renderizados cuando cambia el valor del estado que representan. También sería ideal escribir renderizados más sencillos, visualmente más legibles.
 
+## Persistencia en localstorage 📦
+**duración: 0.5h**
+
+Para hacer persistir nuestros datos en el explorador sólo necesitamos consultar el objeto localStorage al iniciar y actualizarle cada vez que refresquemos un contenedor de bandera, para mantenerlo al día.
+
+Lo único que resta es comprometer los cambios al repositorio local y empujar todos los commits al repositorio remoto!

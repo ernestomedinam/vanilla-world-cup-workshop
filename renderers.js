@@ -106,6 +106,7 @@ function refrescarContenedorDeBandera(id, equipo) {
             _fase => _fase.nombre === fase
         ));
     }
+    localStorage.setItem("state", JSON.stringify(window.state));
 };
 
 function renderizarBotonGanador(fase, visita=false) {

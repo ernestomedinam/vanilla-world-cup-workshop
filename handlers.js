@@ -169,32 +169,34 @@ function manejarClick(event) {
     const indiceFase = window.state.torneo.fases.findIndex(
         fase => fase.nombre === nombreFase 
     );
-    switch(nombreFase.toLowerCase()) {
-        case "fase de grupos":
-            return;
-        case "16vos de final":
-        case "8vos de final":
-        case "semifinales":
-        case "tercer lugar":
-        case "final":
-            const equipo = _obtenerEquipo(event.currentTarget.id);
-            if (equipo.bandera == "tbd") {
-                return;
-            }
-            // quitar equipo de esta fase
-            const _bandera = equipo.bandera;
-            equipo.bandera = "tbd";
-            equipo.nombre = "Por determinar";
-            refrescarContenedorDeBandera(equipo.id, equipo);
-            // devolver equipo a fase anterior
-            const _faseAnterior = nombreFase == "Final"
-                ? indiceFase + 2
-                : indiceFase + 1
-            const _equipo = _obtenerBanderaEnFase(_bandera, _faseAnterior);
-            _equipo.pasaDeFase = false;
-            refrescarContenedorDeBandera(_equipo.id, _equipo);
-            return;
-        default: 
-            return;
+    const divContenedorDeBandera = document.getElementById(event.currentTarget.id);
+    // si se hizo clic en equipo calificado, ignoramos
+    if (divContenedorDeBandera.classList.contains("qualified")) return;
+    // si se hizo clic en la fase de grupo ignoramos
+    if (nombreFase.toLowerCase() === "fase de grupos") return;
+    // obtenemos el equipo
+    const equipo = _obtenerEquipo(event.currentTarget.id);
+    if (equipo.bandera == "tbd") {
+        return;
     }
+    // si la fase es final o semi, refrescamos window.state
+    if (nombreFase === "Final") {
+        window.state.campeon = undefined;
+    }
+    if (nombreFase === "Tercer lugar") {
+        window.state.tercerLugar = undefined;
+    }
+    // quitar equipo de esta fase
+    const _bandera = equipo.bandera;
+    equipo.bandera = "tbd";
+    equipo.nombre = "Por determinar";
+    refrescarContenedorDeBandera(equipo.id, equipo);
+    // devolver equipo a fase anterior
+    const _faseAnterior = nombreFase == "Final"
+        ? indiceFase + 2
+        : indiceFase + 1
+    const _equipo = _obtenerBanderaEnFase(_bandera, _faseAnterior);
+    _equipo.pasaDeFase = false;
+    refrescarContenedorDeBandera(_equipo.id, _equipo);
+    return;
 }

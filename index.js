@@ -8,7 +8,7 @@ document.onreadystatechange = () => {
         // capturamos las fases
         const fases = window.state.torneo.fases;
         // las ordenamos
-        fases.reverse();
+        // fases.reverse();
         // agregamos la propiedad transición a la cancha
         cancha.style.transition = "opacity";
         cancha.style.transitionTimingFunction = "ease-in";

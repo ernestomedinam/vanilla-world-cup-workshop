@@ -268,20 +268,26 @@ function completarTorneo(_torneo) {
             contenedor.equipos = [...equipos];
         }
     }
+    _torneo.fases.reverse();
     return _torneo;
 }
 
-window.state = {
-    torneo: completarTorneo(torneo),
-    arrastrar: {
-        id: undefined,
-        valido: false,
-        indiceFase: undefined,
-    },
-    soltar: {
-        id: undefined,
-        valido: false
-    },
-    campeon: undefined,
-    tercerLugar: undefined
-};
+const _localData = localStorage.getItem("state");
+if (_localData === null) {
+    window.state = {
+        torneo: completarTorneo(torneo),
+        arrastrar: {
+            id: undefined,
+            valido: false,
+            indiceFase: undefined,
+        },
+        soltar: {
+            id: undefined,
+            valido: false
+        },
+        campeon: undefined,
+        tercerLugar: undefined
+    };
+} else {
+    window.state = JSON.parse(_localData);
+}

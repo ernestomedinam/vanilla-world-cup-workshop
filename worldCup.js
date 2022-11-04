@@ -281,5 +281,7 @@ window.state = {
     soltar: {
         id: undefined,
         valido: false
-    }
+    },
+    campeon: undefined,
+    tercerLugar: undefined
 };

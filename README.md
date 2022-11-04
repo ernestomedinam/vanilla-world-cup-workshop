@@ -147,3 +147,13 @@ La funcionalidad que queremos para el evento clic es devolver un equipo califica
 Manejaremos el clic según la fase en la que se haya originado, así sabremos a en cuál fase está el equipo al que quitaremos la calificación `pasaDeFase: false`. El equipo al que se hizo clic le reemplazamos con un equipo no determinado y se refresca el renderizado de ambos contendores de bandera involucrados.
 
 -----
+
+## Seleccionar ganadores! 🏆
+**duración: 1h**
+
+Para seleccionar los ganadores usaremos unos botones con forma de estrellas a los lados de los partidos de final y tercer lugar; al hacer clic en alguno de ellos les haremos ganadores y cambiaran estos botones por unos indicadores de premiación.
+
+Si queremos implementar cierta lógica para que los botones se refresquen y cambien de forma según las circunstancias (no hay equipos, hay equipos, hay ganador) entonces se empieza a hacer engorroso el proceso porque hay varios momentos en los que pueden cambiar los valores de las variables del estado en el objeto window.
+
+En este punto, empieza a parecer que tiene sentido usar alguna abstracción que automatice ciertos procesos, como el refrescamiento de los componentes renderizados cuando cambia el valor del estado que representan. También sería ideal escribir renderizados más sencillos, visualmente más legibles.
+

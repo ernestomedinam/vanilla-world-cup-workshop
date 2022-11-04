@@ -7,7 +7,6 @@ function _permitirEntreFases(destino) {
 }
 
 function _obtenerBanderaEnFase(bandera, indice) {
-    console.log(bandera, indice);
     for (let contenedor of window.state.torneo.fases[indice].contenedores) {
         for (let equipo of contenedor.equipos) {
             if (equipo.bandera === bandera) return equipo;
@@ -60,6 +59,7 @@ function iniciarArrastre(event) {
     const indiceFase = window.state.torneo.fases.findIndex(
         _fase => _fase.nombre === nombreFase
     )
+    if (nombreFase === "Tercer lugar" || nombreFase === "Final") return;
     if (_vecinoIndeterminado(
         event.currentTarget.id,
         indiceFase
@@ -166,14 +166,11 @@ function finalizarArrastre(event) {
 
 function manejarClick(event) {
     const nombreFase = event.currentTarget.parentElement.parentElement.id;
-    console.log("nombre fase:", nombreFase);
     const indiceFase = window.state.torneo.fases.findIndex(
         fase => fase.nombre === nombreFase 
     );
-    console.log("indice fase:", indiceFase);
     switch(nombreFase.toLowerCase()) {
         case "fase de grupos":
-            console.log("no click for you");
             return;
         case "16vos de final":
         case "8vos de final":
@@ -182,7 +179,6 @@ function manejarClick(event) {
         case "final":
             const equipo = _obtenerEquipo(event.currentTarget.id);
             if (equipo.bandera == "tbd") {
-                console.log("no click for you");
                 return;
             }
             // quitar equipo de esta fase
@@ -198,10 +194,7 @@ function manejarClick(event) {
             _equipo.pasaDeFase = false;
             refrescarContenedorDeBandera(_equipo.id, _equipo);
             return;
-            console.log("not yet solved 405");
-            return;
         default: 
-            console.log("what did you click?");
             return;
     }
 }

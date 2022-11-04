@@ -13,6 +13,11 @@ function renderizarFase(fase) {
         // agregamos las clases adicionales
         divFase.classList.add("justify-center", "fases-finales");
     }
+    
+    if (fase.nombre === "Final" || fase.nombre === "Tercer lugar") {
+        const botonGanaCasa = renderizarBotonGanador(fase);
+        divFase.appendChild(botonGanaCasa);
+    }
     // para cada contenedor de banderas creamos un div
     // con las banderas de los equipos
     for (let contenedor of contenedores) {
@@ -21,6 +26,10 @@ function renderizarFase(fase) {
             fasesFinales
         );
         divFase.appendChild(contenedorDeBanderas);
+    }
+    if (fase.nombre === "Final" || fase.nombre === "Tercer lugar") {
+        const botonGanaVisita = renderizarBotonGanador(fase, true);
+        divFase.appendChild(botonGanaVisita);
     }
     return divFase;
 };
@@ -91,4 +100,88 @@ function refrescarContenedorDeBandera(id, equipo) {
     });
     const contenedor = document.getElementById(id);
     contenedor.parentElement.replaceChild(nuevoContenedor, contenedor);
+    const fase = nuevoContenedor.parentElement.parentElement.id;
+    if (fase === "Final" || fase === "Tercer lugar") {
+        refrescarBotonesGanadores(window.state.torneo.fases.find(
+            _fase => _fase.nombre === fase
+        ));
+    }
+};
+
+function renderizarBotonGanador(fase, visita=false) {
+    const button = document.createElement("button");
+    button.setAttribute("id", `${fase.nombre}-${visita ? 1 : 0}`);
+    button.classList.add("boton-ganador");
+    const img = document.createElement("img");
+    // obtener el equipo
+    const indiceFase = window.state.torneo.fases.findIndex(
+        _fase => _fase.nombre === fase.nombre
+    );
+    const equipo = window.state.torneo.fases[indiceFase]
+        .contenedores[0].equipos[
+            visita ? 1 : 0
+        ];
+    if (equipo.bandera === "tbd") {
+        img.src = `./assets/gray-star.png`;
+    } else {
+        if (fase.nombre === "Final" && window.state.campeon) {
+            if (window.state.campeon.id == equipo.id) {
+                // este es el boton del campeon, trofeo oro
+                img.src = `./assets/oro.png`;
+            } else {
+                //este es el subcampeon, plata
+                img.src = `./assets/plata.png`;
+            }
+        } else if (
+            fase.nombre === "Tercer lugar" && 
+            window.state.tercerLugar
+        ) {
+            if (window.state.tercerLugar.id == equipo.id) {
+                // este es el tercer lugar, bronze
+                img.src = `./assets/bronze.png`;
+            } else {
+                // cuarto lugar, medallita
+                img.src = `/assets/silver-star.png`;
+            }
+        } else {
+            // boton activo
+            img.src = `./assets/star.png`;
+            button.addEventListener("click", (event) => {
+                if (_faseLista(fase)) {
+                    window.state[
+                        fase.nombre === "Final"
+                            ? "campeon"
+                            : "tercerLugar"
+                    ] = equipo;
+                    refrescarBotonesGanadores(fase);
+                }
+            });
+            button.style.cursor = "pointer";
+        }
+    }
+    img.classList.add("icono");
+    button.appendChild(img);
+    return button;
+};
+
+function _faseLista(fase) {
+    for (let contenedor of fase.contenedores) {
+        for (let equipo of contenedor.equipos) {
+            if (equipo.bandera === "tbd") return false;
+        }
+    }
+    return true;
+};
+
+function refrescarBotonesGanadores(fase) {
+    const botones = document.querySelectorAll(`button[id^='${fase.nombre}']`);
+    for (let boton of botones) {
+        const _boton = renderizarBotonGanador(
+            fase,
+            boton.id.split("-")[1] == 0
+                ? false
+                : true
+        );
+        boton.parentElement.replaceChild(_boton, boton);
+    }
 };

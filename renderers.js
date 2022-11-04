@@ -77,6 +77,8 @@ function renderizarContenedorDeBandera(equipo) {
         divContenedorDeBandera.addEventListener("dragover", manejarArrastre);
         divContenedorDeBandera.addEventListener("drop", recibirElemento);
     }
+    // agregamos escucha de eventos click
+    divContenedorDeBandera.addEventListener("click", manejarClick);
     // metemos la img en el div
     divContenedorDeBandera.appendChild(imgBandera);
     return divContenedorDeBandera;

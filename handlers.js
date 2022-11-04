@@ -6,6 +6,30 @@ function _permitirEntreFases(destino) {
     return false;
 }
 
+function _obtenerBanderaEnFase(bandera, indice) {
+    console.log(bandera, indice);
+    for (let contenedor of window.state.torneo.fases[indice].contenedores) {
+        for (let equipo of contenedor.equipos) {
+            if (equipo.bandera === bandera) return equipo;
+        }
+    }
+}
+
+function _obtenerEquipo(
+    id, // del equipo buscado
+) {
+    // para cada fase
+    for (let fase of window.state.torneo.fases) {
+        // para cada contendor
+        for (let contenedor of fase.contenedores) {
+            // para cada equipo
+            for (let equipo of contenedor.equipos) {
+                if (equipo.id == id) return  equipo;
+            }
+        }
+    }
+}
+
 function _vecinoIndeterminado(id, indice) {
     // encontrar contenedor
     const contenedores = window.state.torneo.fases[indice].contenedores;
@@ -13,13 +37,16 @@ function _vecinoIndeterminado(id, indice) {
     for (let _contenedor of contenedores) {
         for (let equipo of _contenedor.equipos) {
             if (equipo.id == id) {
-                contenedor = _contenedor
+                for (let equipo of _contenedor.equipos) {
+                    if (equipo.bandera == "tbd") return true;
+                }
+                // contenedor = _contenedor
             }
         }
     }
-    for (let equipo of contenedor.equipos) {
-        if (equipo.bandera == "tbd") return true;
-    }
+    // for (let equipo of contenedor.equipos) {
+    //     if (equipo.bandera == "tbd") return true;
+    // }
     return false;
 }
 
@@ -136,3 +163,45 @@ function finalizarArrastre(event) {
         valido: false
     };
 };
+
+function manejarClick(event) {
+    const nombreFase = event.currentTarget.parentElement.parentElement.id;
+    console.log("nombre fase:", nombreFase);
+    const indiceFase = window.state.torneo.fases.findIndex(
+        fase => fase.nombre === nombreFase 
+    );
+    console.log("indice fase:", indiceFase);
+    switch(nombreFase.toLowerCase()) {
+        case "fase de grupos":
+            console.log("no click for you");
+            return;
+        case "16vos de final":
+        case "8vos de final":
+        case "semifinales":
+        case "tercer lugar":
+        case "final":
+            const equipo = _obtenerEquipo(event.currentTarget.id);
+            if (equipo.bandera == "tbd") {
+                console.log("no click for you");
+                return;
+            }
+            // quitar equipo de esta fase
+            const _bandera = equipo.bandera;
+            equipo.bandera = "tbd";
+            equipo.nombre = "Por determinar";
+            refrescarContenedorDeBandera(equipo.id, equipo);
+            // devolver equipo a fase anterior
+            const _faseAnterior = nombreFase == "Final"
+                ? indiceFase + 2
+                : indiceFase + 1
+            const _equipo = _obtenerBanderaEnFase(_bandera, _faseAnterior);
+            _equipo.pasaDeFase = false;
+            refrescarContenedorDeBandera(_equipo.id, _equipo);
+            return;
+            console.log("not yet solved 405");
+            return;
+        default: 
+            console.log("what did you click?");
+            return;
+    }
+}

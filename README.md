@@ -123,7 +123,7 @@ En el index.js se construyen ahora los divs de cada fase y sus contenedores usan
 -----
 
 ## Eventos: arrastrar y soltar ✋
-**duración: 3h**
+**duración: 2.5h**
 
 Para hacer los elementos arrastrables usaremos la propiedad `draggable` y crearemos funciones que escuchen eventos tipo `drag`.
 
@@ -139,3 +139,11 @@ Cuando se trata de un arrastre válido, se actualiza el estado torneo en los obj
 
 -----
 
+## Eventos: click 🎯
+**duración: 1h**
+
+La funcionalidad que queremos para el evento clic es devolver un equipo calificado a una fase a su fase anterior. Para esto declaramos una función para manejar el evento clic y la estableceremos como escuchador para los contenedores de bandera.
+
+Manejaremos el clic según la fase en la que se haya originado, así sabremos a en cuál fase está el equipo al que quitaremos la calificación `pasaDeFase: false`. El equipo al que se hizo clic le reemplazamos con un equipo no determinado y se refresca el renderizado de ambos contendores de bandera involucrados.
+
+-----

@@ -98,7 +98,7 @@ $ git push -u origin <rama> # es lo que se usa para ese primer push
 
 -----
 
-## halar cambios y continuar 👻
+## Halar cambios y continuar 👻
 **duración: 0.5h**
 
 Hoy arrancaremos el trabajo desde un nuevo espacio de trabajod de gitpod con base en el estado actual de la rama main, que debe tener todos los cambios que empujamos ayer. Esto lo podemos hacer directamente desde nuestro repositorio en github usando el botón de la extensión de gitpod.

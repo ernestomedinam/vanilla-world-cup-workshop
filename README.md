@@ -163,3 +163,18 @@ En este punto, empieza a parecer que tiene sentido usar alguna abstracción que 
 Para hacer persistir nuestros datos en el explorador sólo necesitamos consultar el objeto localStorage al iniciar y actualizarle cada vez que refresquemos un contenedor de bandera, para mantenerlo al día.
 
 Lo único que resta es comprometer los cambios al repositorio local y empujar todos los commits al repositorio remoto!
+
+-----
+
+# Cambiando a ReactJS ⚛
+**duración: 0.5h**
+
+Para hacer esta interfaz con ReactJS vamos a craer una carpeta `src` con un `index.js`, `template.html` y `style.css`, con contenido básico para cada uno, siendo el del archivo js la novedad porque es el punto de entrada de nuestra aplicación.
+
+Debemos inicializar un proyecto con npm e instalar las librerías listadas en el package.json, que comprenden lo necesario para correr react con base en webpack y babel. También crearemos dos nuevos archivos con la configuración de babel y webpack, `babel.config.json` y `webpack.config.js`.
+
+Agregaremos también un archivo de extensión `ico` a la carpeta assets para que funcione como favicon, así como un archivo oculto llamado `gitignore` para especificar los archivos que git debe ignorar.
+
+-----
+
+# Componentes y estados en ReactJS 🍰

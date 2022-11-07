@@ -178,3 +178,15 @@ Agregaremos también un archivo de extensión `ico` a la carpeta assets para que
 -----
 
 # Componentes y estados en ReactJS 🍰
+**duración: 1h**
+
+Crearemos carpetas dentro del directorio `src` para páginas, componentes y contextos. La estructura del contexto será sencilla y se fundamentará en un reductor para manejar la complejidad de modificaciones en los equipos de los contenedores de las fases del torneo.
+
+El contexto contendrá toda la dara que antes manejábamos en la propiedad `state` del objeto `window`. Estará envolviendo toda la aplicación desde el componente principal llamado `<Board />`.
+
+Después replicamos los componentes según descritos en el código del documento renderers.js y trasladamos los estilos completos al nuevo archivo `styles.css` dentro del directorio `src`. Al final tendremos exactamente la misma vista y funcionalidad que teníamos antes de explorar los escuchadores de eventos en el DOM.
+
+-----
+
+# Eventos en ReactJS 🧨
+

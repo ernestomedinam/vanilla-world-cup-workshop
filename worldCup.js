@@ -291,3 +291,5 @@ if (_localData === null) {
 } else {
     window.state = JSON.parse(_localData);
 }
+
+export const torneoCompleto = completarTorneo(torneo);

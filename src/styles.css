@@ -1,0 +1,175 @@
+.react-title {
+    color: yellow;
+}
+
+*, *::after, *::before {
+    /* establece margen externo e interno a 0 para todos los elementos */
+    margin: 0;
+    padding: 0;
+    /* establece la propiedad box-sizing a border-box */
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 2rem;
+    background-color: darkgreen;
+}
+
+#cancha {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    position:relative;
+    height: 55rem;
+    /* ajustar el ancho según el dispositivo */
+    width: 90rem; 
+}
+
+.meta {
+    height: 50%;
+    width: 15%;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    background-color: green;
+}
+
+.meta-izquierda {
+    left: 0;
+}
+
+.meta-derecha {
+    right: 0;
+}
+
+.linea-campo {
+    border: 0.5rem solid lightgray;
+}
+
+.medialuna {
+    height: 50%;
+    width: 100%;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    background-color: green;
+}
+
+.medialuna-derecha {
+    left: -5px;
+    transform: translate(-50%, 50%);
+}
+
+.medialuna-izquierda {
+    right: -5px;
+    transform: translate(50%, 50%);
+}
+
+.medialuna-central {
+    position: absolute;
+    height: 50%;
+    width: 30%;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: green;
+}
+
+.mediocampo {
+    border: 0.25rem solid lightgray;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: calc(50% - 2.5px);
+}
+
+.fase {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    height: 100%;
+    margin: 1rem 0;
+    z-index: 1000;
+    background-color: rgba(50, 50, 50, 0.2);
+}
+
+.fases-finales .contenedor-bandera {
+    max-width: none;
+    margin: 0 1rem;
+}
+
+.fases-finales .bandera {
+    width: 5rem;
+}
+
+.contenedor-banderas {
+    display: flex;
+    flex-flow: row wrap;
+    flex-grow: 1;
+    margin: 0 1rem;
+    background-color: white;
+    border: 2px solid black;
+    justify-content: center;
+    align-items: center;
+}
+
+.w-auto {
+    flex-grow: 0;
+    width: auto;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.contenedor-bandera {
+    display: flex;
+    max-width: 40%;
+    margin: 0.2rem;
+    position: relative;
+}
+
+.bandera {
+    width: 100%;
+    height: auto;
+}
+
+.drag-over {
+    background-color: lightgreen;
+    box-shadow: 0 0 10px 10px lightgreen;
+}
+
+.qualified::after, .qualified::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    content: " ";
+    z-index: 1000;
+}
+
+.qualified::after {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,0.8);
+
+}
+
+.qualified::before {
+    background-color: red;
+
+}
+
+.boton-ganador {
+    width: 64px;
+    border: none;
+    background-color: transparent;
+}
+
+.icono {
+    width: 100%;
+    height: auto;
+}

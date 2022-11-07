@@ -1,6 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./style.css";
+import { AppContextProvider } from "./contexts/AppContext";
+import Board from "./pages/Board";
+import "./styles.css";
 
 const root = ReactDOM.createRoot(document.querySelector("#app"));
-root.render(<h1 className="react-title">hello 🌞</h1>);
+root.render(
+    <AppContextProvider>
+        <Board />
+    </AppContextProvider>
+);

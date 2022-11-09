@@ -22,6 +22,7 @@ const Board = (props) => {
             {state.torneo.fases.map((fase, indice) => (
                 <Fase
                     key={indice} 
+                    indiceFase={indice}
                     fase={fase} />
             ))}
         </section>

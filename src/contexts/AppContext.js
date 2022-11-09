@@ -1,6 +1,6 @@
 import React, { useContext, useReducer, useEffect } from "react";
 import { torneoCompleto } from "../../worldCup";
-import { appContextReducer, initContextReducer } from "./appContextRedulcer";
+import { appContextReducer, initContextReducer } from "./appContextReducer";
 
 const AppStateContext = React.createContext();
 const AppDispatchContext = React.createContext();

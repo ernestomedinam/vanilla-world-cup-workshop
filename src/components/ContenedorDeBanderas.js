@@ -3,6 +3,7 @@ import { ContenedorDeBandera } from "./ContenedorDeBandera";
 
 export const ContenedorDeBanderas = ({
     contenedor,
+    indiceFase,
     faseFinal
 }) => {
     return (
@@ -12,6 +13,7 @@ export const ContenedorDeBanderas = ({
             {contenedor.equipos.map((equipo, indice) => (
                 <ContenedorDeBandera 
                     key={indice}
+                    indiceFase={indiceFase}
                     equipo={equipo} />
             ))}
         </div>
